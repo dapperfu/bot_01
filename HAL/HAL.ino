@@ -1,14 +1,33 @@
+
+int analogValue_3 = 0;
+int analogValue_4 = 0;
+int analogValue_5 = 0;
+
 void setup() {
   Serial.begin(115200);
-  // initialize digital pin 13 as an output.
-  pinMode(13, OUTPUT);
+  
 }
 
-// the loop function runs over and over again forever
 void loop() {
-  Serial.println("Meep");
-  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(1000);              // wait for a second
-  digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
-  delay(1000);              // wait for a second
+  // Analog Input 3
+  analogValue_3 = analogRead(3);
+  Serial.print("A3=");
+  Serial.print(analogValue_3);
+  Serial.print(",");
+        
+  // Analog Input 4
+  analogValue_4 = analogRead(4);
+  Serial.print("A4=");
+  Serial.print(analogValue_4);
+  Serial.print(",");
+        
+  // Analog Input 5
+  analogValue_5 = analogRead(5);
+  Serial.print("A5=");
+  Serial.print(analogValue_5);
+  Serial.print(",");
+        
+
+  Serial.println("");
+  delay(250);
 }
