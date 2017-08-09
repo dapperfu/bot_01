@@ -1,11 +1,33 @@
 pipeline {
     /* insert Declarative Pipeline here */
     /* https://jenkins.io/doc/book/pipeline/syntax/ */
-    agent { any }
+    agent any
+    triggers {
+        pollSCM('*/30 * * * *')
+    }
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
+    environment {
+        HELLO = "WORLD"
+    }
     stages {
+        stage('Clean Environment') {
+            when {
+                branch 'production'
+            }
+            steps {
+                sh 'make clean'
+            }
+        }
         stage('Setup Environment') {
             steps {
                 sh 'make -j2 env'
+            }
+        }
+        stage('Build Blink') {
+            steps {
+                sh 'make blink'
             }
         }
     }
