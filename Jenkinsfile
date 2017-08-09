@@ -27,7 +27,12 @@ pipeline {
         }
         stage('Build Blink') {
             steps {
-                sh 'make blink'
+                sh 'make Blink'
+            }
+        }
+        stage('Build HAL') {
+            steps {
+                sh 'make HAL'
             }
         }
     }
