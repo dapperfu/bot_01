@@ -1,7 +1,5 @@
 
 int analogValue_3 = 0;
-int analogValue_4 = 0;
-int analogValue_5 = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -10,9 +8,10 @@ void setup() {
 
 void loop() {
   // Analog Input 3
-  analogValue_3 = analogRead(3);
   Serial.print("A3=");
   Serial.print(analogValue_3);
+  
+  delay(250);
   Serial.print(",");
         
   // Analog Input 4
